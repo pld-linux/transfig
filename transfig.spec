@@ -9,8 +9,6 @@ Release:	3
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
-Group(de):	X11/Applikationen/Grafik
-Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-anti_latin1.patch
