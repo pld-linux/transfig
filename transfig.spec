@@ -5,7 +5,7 @@ Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych forma
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.3c
-Release:	2
+Release:	3
 License:	Distributable
 Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
@@ -13,6 +13,7 @@ Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
 Patch0:		%{name}-i18n.patch
 Patch1:		%{name}-config.patch
+Patch2:		%{name}-anti_latin1.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	gdbm-devel
@@ -38,8 +39,8 @@ des nombreux environnements.
 
 %description -l pl
 Pakiet TransFig jest zbiorem narzêdzi do tworzenia dokumentów TeXowych
-z grafik±, które bêd± przenoszalne w sensie, ¿e bêd± mozliwe do
-wydrukowania na szrokiej palecie drukarek.
+z grafik±, które bêd± przenoszalne w sensie, ¿e bêdzie mo¿na je
+wydrukowaæ na szerokiej palecie drukarek.
 
 %description -l tr
 TransFig, çizimler içeren TeX belgeleri üretebilmek için kullanýlan
@@ -48,8 +49,10 @@ yaratýr.
 
 %prep
 %setup -q -n %{name}.%{version}
+chmod u+w -R *
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 xmkmf -a
