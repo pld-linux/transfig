@@ -58,8 +58,8 @@ xmkmf -a
 %ifarch alpha
 	EXTRA_DEFINES="-Dcfree=free" \
 %endif
-	CDEBUGFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
-	CXXDEBUGFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
+	CDEBUGFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
+	CXXDEBUGFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
 	LOCAL_LDFLAGS=%{!?debug:-s}
 
 %install
