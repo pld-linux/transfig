@@ -9,13 +9,16 @@ Summary(tr):	fig dosyalarЩnЩ baЧka biГimlere dЖnЭЧtЭrЭr
 Summary(uk):	Конвертор файл╕в .fig (формат програми xfig) в ╕нш╕ формати
 Name:		transfig
 Version:	3.2.4
-Release:	1
+Release:	2
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
 # Source0-md5:	742de0f7a3cae74d247bbd0c70dd9dd7
 Patch0:		%{name}-config.patch
+Patch1:		%{name}-broken.patch
+Patch2:		%{name}-gcc33.patch
+Patch3:		%{name}-strerror.patch
 # seems outdated (some i18n support has been introduced)
 #Patch1:		%{name}-anti_latin1.patch
 BuildRequires:	XFree86-devel
@@ -78,6 +81,9 @@ TeX документ╕в, як╕ ╓ портабельними (тобто, можуть бути надрукован╕ на
 %prep
 %setup -q -n %{name}.%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 xmkmf -a
