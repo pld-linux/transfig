@@ -67,9 +67,9 @@ gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc CHANGES NOTES README
-%attr(755, root, root) /usr/X11R6/bin/*
+%attr(755,root,root) /usr/X11R6/bin/*
 /usr/X11R6/man/man1/*
 
 %changelog
