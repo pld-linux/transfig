@@ -64,7 +64,7 @@ do
 	install -c fig2dev/$i.script $RPM_BUILD_ROOT%{_bindir}/$i
 done
 
-strip $RPM_BUILD_ROOT%{_bindir}/*
+strip $RPM_BUILD_ROOT%{_bindir}/{fig2dev,transfig}
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	CHANGES NOTES README
