@@ -5,7 +5,7 @@ Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych forma
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.1
-Release:	4
+Release:	5
 Copyright:	distributable
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
@@ -63,6 +63,8 @@ for i in fig2ps2tex fig2ps2tex.sh pic2tpic
 do
 	install -c fig2dev/$i.script $RPM_BUILD_ROOT%{_bindir}/$i
 done
+
+strip $RPM_BUILD_ROOT%{_bindir}/*
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	CHANGES NOTES README
