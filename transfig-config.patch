@@ -1,6 +1,6 @@
-diff -Nru transfig.3.2.3c/fig2dev/Imakefile transfig.3.2.3c.new/fig2dev/Imakefile
---- transfig.3.2.3c/fig2dev/Imakefile	Fri Sep 29 09:09:50 2000
-+++ transfig.3.2.3c.new/fig2dev/Imakefile	Fri Sep 29 09:44:51 2000
+diff -Nru transfig.3.2.3d/fig2dev/Imakefile transfig.3.2.3d.new/fig2dev/Imakefile
+--- transfig.3.2.3d/fig2dev/Imakefile	Thu Apr 19 19:19:38 2001
++++ transfig.3.2.3d.new/fig2dev/Imakefile	Sat Jun 16 21:31:12 2001
 @@ -28,7 +28,7 @@
  XCOMM You should point XFIGLIBDIR to the same directory you did when you compiled
  XCOMM and installed xfig.  This will be made automatic in the future.
@@ -17,9 +17,9 @@ diff -Nru transfig.3.2.3c/fig2dev/Imakefile transfig.3.2.3c.new/fig2dev/Imakefil
 -RGB = $(LIBDIR)/rgb.txt
 +RGB = /usr/X111R6/lib/X11/rgb.txt
  
- XCOMM ****************
- XCOMM Unomment the #define for USEXPM if you want to use the XPM
-@@ -71,7 +71,7 @@
+ XCOMM Comment out the following #define USEPNG if you don't want PNG support
+ XCOMM Uncomment the #define for USEPNG if you want to be able to import
+@@ -82,7 +82,7 @@
  
  #ifdef USEXPM
  XPMLIBDIR = $(USRLIBDIR)
@@ -28,7 +28,7 @@ diff -Nru transfig.3.2.3c/fig2dev/Imakefile transfig.3.2.3c.new/fig2dev/Imakefil
  #endif
  
  XCOMM ****************
-@@ -91,8 +91,8 @@
+@@ -104,8 +104,8 @@
  
  #ifdef USEJPEG
  #ifdef USEINSTALLEDJPEG
@@ -39,7 +39,7 @@ diff -Nru transfig.3.2.3c/fig2dev/Imakefile transfig.3.2.3c.new/fig2dev/Imakefil
  #else
  JPEGLIBDIR = ../jpeg
  JPEGINCDIR = $(JPEGLIBDIR)
-@@ -145,22 +145,9 @@
+@@ -158,11 +158,11 @@
  
  #ifdef I18N
  I18N_DEFS = -DI18N 
@@ -47,32 +47,22 @@ diff -Nru transfig.3.2.3c/fig2dev/Imakefile transfig.3.2.3c.new/fig2dev/Imakefil
 +FIG2DEV_LIBDIR = /usr/X11R6/share/fig2dev
  I18N_DEV_DEFS = $(I18N_DEFS) -DFIG2DEV_LIBDIR=\\\"$(FIG2DEV_LIBDIR)\\\"
  
--install::
+ install::
 -	[ -d $(DESTDIR)$(FIG2DEV_LIBDIR) ] || mkdir $(DESTDIR)$(FIG2DEV_LIBDIR)
--	$(INSTALL) -m 644 -c dev/japanese.ps $(DESTDIR)$(FIG2DEV_LIBDIR)
--	( cd $(DESTDIR)$(FIG2DEV_LIBDIR); \
--	  rm -f ja.ps ja_JP.ps ja_JP.ujis.ps ja_JP.eucJP.ps ja_JP.EUC.ps; \
--	  ln -s japanese.ps ja.ps; ln -s japanese.ps ja_JP.ps; \
--	  ln -s japanese.ps ja_JP.ujis.ps; ln -s japanese.ps ja_JP.eucJP.ps; \
--	  ln -s japanese.ps ja_JP.EUC.ps )
--	$(INSTALL) -m 644 -c  dev/korean.ps $(DESTDIR)$(FIG2DEV_LIBDIR)
--	( cd $(DESTDIR)$(FIG2DEV_LIBDIR); \
--	  rm -f ko.ps ko_KR.ps ko_KR.eucKR.ps ko_KR.EUC.ps; \
--	  ln -s korean.ps ko.ps; ln -s korean.ps ko_KR.ps; \
--	  ln -s korean.ps ko_KR.eucKR.ps; ln -s korean.ps ko_KR.EUC.ps )
- #endif
- 
- DEFINES = $(NEED_STRERROR) $(HAVE_NO_STRCASECMP) $(HAVE_NO_STRNCASECMP) $(USEINLINE) \
-@@ -158,7 +158,7 @@
++	[ -d $(DESTDIR)$(FIG2DEV_LIBDIR) ] || mkdir -p $(DESTDIR)$(FIG2DEV_LIBDIR)
+ 	$(INSTALL) -m 644 -c dev/japanese.ps $(DESTDIR)$(FIG2DEV_LIBDIR)
+ 	( cd $(DESTDIR)$(FIG2DEV_LIBDIR); \
+ 	  rm -f ja.ps ja_JP.ps ja_JP.ujis.ps ja_JP.eucJP.ps ja_JP.EUC.ps; \
+@@ -185,7 +185,7 @@
  XCOMM *** You shouldn't have to change anything below this point ***
  XCOMM **************************************************************
  
 -DIR_DEFS=	-DBITMAPDIR=\\\"$(DESTDIR)$(XFIGLIBDIR)/bitmaps\\\"
 +DIR_DEFS=	-DBITMAPDIR=\\\"$(DESTDIR)/usr/X11R6/share/xfig\\\"
  
- #ifdef USEXPM
- DUSEXPM = -DUSE_XPM
-@@ -248,11 +248,11 @@
+ #ifdef USEPNG
+ DUSEPNG = -DUSE_PNG
+@@ -280,11 +280,11 @@
  XCOMM Install the tk bitmaps here
  install::
  	@(cd bitmaps ; \
