@@ -51,7 +51,7 @@ des nombreux environnements.
 
 %description -l pl
 Pakiet TransFig jest zbiorem narzêdzi do tworzenia dokumentów TeXowych
-z grafik±, które bêd± przeno¶ne w sensie, ¿e bêdzie mo¿na je
+z grafik±, które bêd± przeno¶ne w tym sensie, ¿e bêdzie mo¿na je
 wydrukowaæ na szerokiej palecie drukarek.
 
 %description -l pt_BR
