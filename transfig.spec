@@ -81,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/xfig
 %dir %{_datadir}/fig2dev
-%lang(cz) %{_datadir}/fig2dev/cz*.ps
+%lang(cs) %{_datadir}/fig2dev/cs*.ps
 %lang(ja) %{_datadir}/fig2dev/ja*.ps
 %lang(ko) %{_datadir}/fig2dev/ko*.ps
 %{_mandir}/man1/*
