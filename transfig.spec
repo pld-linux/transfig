@@ -7,7 +7,7 @@ Name:		transfig
 Version:	3.2.3d
 Release:	3
 Epoch:		1
-License:	Distributable
+License:	distributable
 Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
