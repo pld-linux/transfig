@@ -4,13 +4,15 @@ Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
 Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych formatów
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
-Version:	3.2.3
-Release:	1
-Copyright:	distributable
+Version:	3.2.3c
+Release:	2
+License:	Distributable
 Group:		X11/Applications/Graphics
+Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
-Source:		ftp://ftp.x.org/contrib/applications/drawing_tools/transfig/%{name}.%{version}.tar.gz
-Patch0:		transfig-imake.patch
+Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
+Patch0:		%{name}-i18n.patch
+PAtch1:		%{name}-config.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
@@ -27,8 +29,8 @@ variety of environments.
 
 %description -l de
 TransFig ist ein Satz von Tools zum Erstellen von TeX-Dokumenten mit
-Grafiken, die portabel sind, das heißt, sie können in einer großen Auswahl
-von Umgebungen gedruckt werden.
+Grafiken, die portabel sind, das heißt, sie können in einer großen
+Auswahl von Umgebungen gedruckt werden.
 
 %description -l fr
 Transfig est un ensemble d'outils pour créer des documents textes avec
@@ -36,43 +38,38 @@ des graphiques portables, en ce sens qu'ils peuvent être imprimés dans
 des nombreux environnements.
 
 %description -l pl
-Pakiet TransFig jest zbiorem narzêdzi do tworzenia dokumentów TeXowych z
-grafik±, które bêd± przenoszalne w sensie, ¿e bêd± mozliwe do wydrukowania
-na szrokiej palecie drukarek.
+Pakiet TransFig jest zbiorem narzêdzi do tworzenia dokumentów TeXowych
+z grafik±, które bêd± przenoszalne w sensie, ¿e bêd± mozliwe do
+wydrukowania na szrokiej palecie drukarek.
 
 %description -l tr
-TransFig, çizimler içeren TeX belgeleri üretebilmek için kullanýlan bir araç
-kümesidir ve çeþitli ortamlarda çýktýsý alýnabilecek dosyalar yaratýr.
+TransFig, çizimler içeren TeX belgeleri üretebilmek için kullanýlan
+bir araç kümesidir ve çeþitli ortamlarda çýktýsý alýnabilecek dosyalar
+yaratýr.
 
 %prep
 %setup -q -n %{name}.%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
-xmkmf
-%{__make} Makefiles
+xmkmf -a
 
+%{__make} \
 %ifarch alpha
-%{__make} EXTRA_DEFINES="-Dcfree=free" \
-	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
-%else
-make	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
+	EXTRA_DEFINES="-Dcfree=free" \
 %endif
+	CDEBUGFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}" \
+	CXXDEBUGFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}" \
+	LOCAL_LDFLAGS=%{!?debug:-s}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
 
-# Dunno why these are not installed
-#for i in fig2ps2tex fig2ps2tex.sh pic2tpic
-#do
-#	install -c fig2dev/$i.script $RPM_BUILD_ROOT%{_bindir}/$i
-#done
+%{__make} install install.man \
+	DESTDIR=$RPM_BUILD_ROOT
 
-strip $RPM_BUILD_ROOT%{_bindir}/{fig2dev,transfig}
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	CHANGES NOTES README
+gzip -9nf CHANGES NOTES README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -81,4 +78,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
+%{_datadir}/xfig
 %{_mandir}/man1/*
