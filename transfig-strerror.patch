@@ -1,0 +1,11 @@
+--- transfig.3.2.3c/fig2dev/Imakefile.orig	Thu Jul 20 21:38:53 2000
++++ transfig.3.2.3c/fig2dev/Imakefile	Fri Apr 13 20:57:13 2001
+@@ -34,7 +34,7 @@
+ XCOMM If your system has the strerror() function (doesn't have sys_errlist) then
+ XCOMM comment out NEED_STRERROR with an XCOMM comment.
+ 
+-NEED_STRERROR = -DNEED_STRERROR
++XCOMM NEED_STRERROR = -DNEED_STRERROR
+ 
+ XCOMM The following probably only applies to Windows 9x/NT:
+ XCOMM If your system can open files in text and binary modes and has the

@@ -1,0 +1,29 @@
+--- transfig.3.2.4/fig2dev/dev/genemf.c.orig	2003-06-17 10:18:43.000000000 -0400
++++ transfig.3.2.4/fig2dev/dev/genemf.c	2003-06-17 10:18:34.000000000 -0400
+@@ -375,7 +375,7 @@
+ static void rotate();
+ static void shape();
+ static void shape_interior();
+-static void text();
++static void textfunc();
+ static void textangle();
+ static void textcolr();
+ static void textfont();
+@@ -1788,7 +1788,7 @@
+ }
+ 
+ 
+-static void text(x, y, h, l, text, type)
++static void textfunc(x, y, h, l, text, type)
+     int     x, y;
+     double  h, l;			/* Pixels (1200 dpi) */
+     char   *text;
+@@ -2206,7 +2206,7 @@
+   texttype(t->type);
+   textcolr(t->color);
+   textangle(t->angle);
+-  text(t->base_x, t->base_y, t->height, t->length, t->cstring, t->type);
++  textfunc(t->base_x, t->base_y, t->height, t->length, t->cstring, t->type);
+ }
+ 
+ 
