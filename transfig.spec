@@ -18,7 +18,7 @@ BuildRequires:	xpm-devel
 BuildRequires:	gdbm-devel
 
 %define		_prefix		/usr/X11R6
-#%define		_mandir		%{_prefix}/share/man
+%define		_mandir		%{_prefix}/man
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -62,10 +62,6 @@ make	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
 %install
 rm -rf $RPM_BUILD_ROOT
 make install install.man DESTDIR=$RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT%{_prefix}/share
-
-mv $RPM_BUILD_ROOT%{_prefix}/man $RPM_BUILD_ROOT%{_prefix}/share
 
 # Dunno why these are not installed
 #for i in fig2ps2tex fig2ps2tex.sh pic2tpic
