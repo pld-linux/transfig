@@ -24,6 +24,9 @@ Patch3:		%{name}-strerror.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+Requires:	ghostscript
+Requires:	ghostscript-fonts-std
+Conflicts:	netpbm-progs < 9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
