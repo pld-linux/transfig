@@ -4,16 +4,15 @@ Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
 Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych formatów
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
-Version:	3.2.3c
-Release:	3
+Version:	3.2.3d
+Release:	1
 License:	Distributable
 Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
-Patch0:		%{name}-i18n.patch
-Patch1:		%{name}-config.patch
-Patch2:		%{name}-anti_latin1.patch
+Patch0:		%{name}-config.patch
+Patch1:		%{name}-anti_latin1.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	gdbm-devel
@@ -52,7 +51,6 @@ yaratýr.
 chmod u+w -R *
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 xmkmf -a
@@ -81,4 +79,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/xfig
+%dir %{_datadir}/fig2dev
+%lang(cz) %{_datadir}/fig2dev/cz*.ps
+%lang(ja) %{_datadir}/fig2dev/ja*.ps
+%lang(ko) %{_datadir}/fig2dev/ko*.ps
 %{_mandir}/man1/*
