@@ -69,14 +69,12 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 ln -sf cs_CZ.ps $RPM_BUILD_ROOT/%{_datadir}/fig2dev/pl_PL.ps
 
-gzip -9nf CHANGES NOTES README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc CHANGES NOTES README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/xfig
 %dir %{_datadir}/fig2dev
