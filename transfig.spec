@@ -5,7 +5,7 @@ Summary(pl):	Konwerter plików w formacie .fig (jakie generuje xfig) do innych fo
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.3d
-Release:	4
+Release:	5
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
@@ -67,6 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install install.man \
 	DESTDIR=$RPM_BUILD_ROOT
+ln -sf cs_CZ.ps $RPM_BUILD_ROOT/%{_datadir}/fig2dev/pl_PL.ps
 
 gzip -9nf CHANGES NOTES README
 
@@ -82,4 +83,5 @@ rm -rf $RPM_BUILD_ROOT
 %lang(cs) %{_datadir}/fig2dev/cs*.ps
 %lang(ja) %{_datadir}/fig2dev/ja*.ps
 %lang(ko) %{_datadir}/fig2dev/ko*.ps
+%lang(pl) %{_datadir}/fig2dev/pl*.ps
 %{_mandir}/man1/*
