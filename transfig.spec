@@ -4,17 +4,21 @@ Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
 Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych formatów
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
-Version:	3.2.1
-Release:	5
+Version:	3.2.3
+Release:	1
 Copyright:	distributable
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
 Source:		ftp://ftp.x.org/contrib/applications/drawing_tools/transfig/%{name}.%{version}.tar.gz
 Patch0:		transfig-imake.patch
 Buildroot:	/tmp/%{name}-%{version}-root
+BuildRequires:	XFree86-devel
+BuildRequires:	libjpeg-devel
+BuildRequires:	xpm-devel
+BuildRequires:	gdbm-devel
 
 %define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
+#%define		_mandir		%{_prefix}/share/man
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -42,6 +46,7 @@ kümesidir ve çeþitli ortamlarda çýktýsý alýnabilecek dosyalar yaratýr.
 
 %prep
 %setup -q -n %{name}.%{version}
+%patch0 -p1
 
 %build
 xmkmf
@@ -58,11 +63,15 @@ make	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
 rm -rf $RPM_BUILD_ROOT
 make install install.man DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_prefix}/share
+
+mv $RPM_BUILD_ROOT%{_prefix}/man $RPM_BUILD_ROOT%{_prefix}/share
+
 # Dunno why these are not installed
-for i in fig2ps2tex fig2ps2tex.sh pic2tpic
-do
-	install -c fig2dev/$i.script $RPM_BUILD_ROOT%{_bindir}/$i
-done
+#for i in fig2ps2tex fig2ps2tex.sh pic2tpic
+#do
+#	install -c fig2dev/$i.script $RPM_BUILD_ROOT%{_bindir}/$i
+#done
 
 strip $RPM_BUILD_ROOT%{_bindir}/{fig2dev,transfig}
 
