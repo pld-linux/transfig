@@ -70,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 %doc CHANGES NOTES README
 %attr(755, root, root) /usr/X11R6/bin/*
-%attr(644, root,  man) /usr/X11R6/man/man1/*
+/usr/X11R6/man/man1/*
 
 %changelog
 * Fri Jan 08 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
