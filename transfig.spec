@@ -12,12 +12,12 @@ Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
 Patch0:		%{name}-i18n.patch
-PAtch1:		%{name}-config.patch
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Patch1:		%{name}-config.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	xpm-devel
 BuildRequires:	gdbm-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
