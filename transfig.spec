@@ -14,6 +14,7 @@ Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
+# Source0-md5:	742de0f7a3cae74d247bbd0c70dd9dd7
 Patch0:		%{name}-config.patch
 # seems outdated (some i18n support has been introduced)
 #Patch1:		%{name}-anti_latin1.patch
