@@ -4,19 +4,22 @@ Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
 Summary(pl):	Konwerter plików w formacie .fig (jakie generuje xfig) do innych formatów
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
-Version:	3.2.3d
-Release:	5
+Version:	3.2.4
+Release:	1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
 Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
 Patch0:		%{name}-config.patch
-Patch1:		%{name}-anti_latin1.patch
+# seems outdated (some i18n support has been introduced)
+#Patch1:		%{name}-anti_latin1.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -45,9 +48,7 @@ yaratýr.
 
 %prep
 %setup -q -n %{name}.%{version}
-chmod u+w -R *
 %patch0 -p1
-%patch1 -p1
 
 %build
 xmkmf -a
@@ -56,16 +57,19 @@ xmkmf -a
 %ifarch alpha
 	EXTRA_DEFINES="-Dcfree=free" \
 %endif
-	CDEBUGFLAGS="%{rpmcflags} `pkg-config --cflags libpng12 2>/dev/null`" \
+	CDEBUGFLAGS="%{rpmcflags}" \
 	CXXDEBUGFLAGS="%{rpmcflags}" \
-	LOCAL_LDFLAGS="%{rpmldflags}"
+	LOCAL_LDFLAGS="%{rpmldflags}" \
+	BINDIR=%{_bindir} \
+	MANPATH=%{_mandir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install install.man \
-	DESTDIR=$RPM_BUILD_ROOT
-ln -sf cs_CZ.ps $RPM_BUILD_ROOT/%{_datadir}/fig2dev/pl_PL.ps
+	DESTDIR=$RPM_BUILD_ROOT \
+	BINDIR=%{_bindir} \
+	MANPATH=%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,8 +80,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/xfig
 %dir %{_datadir}/fig2dev
-%lang(cs) %{_datadir}/fig2dev/cs*.ps
+# other latin-2 files are symlinks to cs_CZ.ps
+%lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/cs*.ps
+%lang(hr) %{_datadir}/fig2dev/hr*.ps
 %lang(ja) %{_datadir}/fig2dev/ja*.ps
 %lang(ko) %{_datadir}/fig2dev/ko*.ps
 %lang(pl) %{_datadir}/fig2dev/pl*.ps
+%lang(ro) %{_datadir}/fig2dev/ro*.ps
+%lang(sk) %{_datadir}/fig2dev/sk*.ps
+%lang(sl) %{_datadir}/fig2dev/sl*.ps
 %{_mandir}/man1/*
