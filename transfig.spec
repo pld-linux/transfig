@@ -5,12 +5,12 @@ Summary(pl): konwerter formatu plików .fig (jakie generuje xfig) do innych forma
 Summary(tr): fig dosyalarýný baþka biçimlere dönüþtürür
 Name:        transfig
 Version:     3.2.1
-Release:     2
+Release:     3
 Copyright:   distributable
 Group:       X11/Applications/Graphics
 Group(pl):   X11/Aplikacje/Grafika
 Source:      ftp://ftp.x.org/contrib/applications/drawing_tools/transfig/%{name}.%{version}.tar.gz
-Patch0:      transfig-3.2.1-imake.patch
+Patch0:      transfig-imake.patch
 Buildroot:   /tmp/%{name}-%{version}-root
 
 %description
@@ -69,10 +69,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644, root, root, 755)
 %doc CHANGES NOTES README
-/usr/X11R6/bin/*
-/usr/X11R6/man/man1/*
+%attr(755, root, root) /usr/X11R6/bin/*
+%attr(644, root,  man) /usr/X11R6/man/man1/*
 
 %changelog
+* Fri Jan 08 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.2.1-3]
+- added missing %attr macros.
+
 * Tue Dec  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.2.1-2]
 - added gzipping man pages,
