@@ -6,6 +6,7 @@ Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.3d
 Release:	1
+Epoch:		1
 License:	Distributable
 Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
