@@ -39,7 +39,7 @@ des nombreux environnements.
 
 %description -l pl
 Pakiet TransFig jest zbiorem narzêdzi do tworzenia dokumentów TeXowych
-z grafik±, które bêd± przenoszalne w sensie, ¿e bêdzie mo¿na je
+z grafik±, które bêd± przeno¶ne w sensie, ¿e bêdzie mo¿na je
 wydrukowaæ na szerokiej palecie drukarek.
 
 %description -l tr
@@ -63,7 +63,7 @@ xmkmf -a
 %endif
 	CDEBUGFLAGS="%{rpmcflags}" \
 	CXXDEBUGFLAGS="%{rpmcflags}" \
-	LOCAL_LDFLAGS=%{!?debug:-s}
+	LOCAL_LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
