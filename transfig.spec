@@ -5,7 +5,7 @@ Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych forma
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.3d
-Release:	2
+Release:	3
 Epoch:		1
 License:	Distributable
 Group:		X11/Applications/Graphics
@@ -16,7 +16,6 @@ Patch0:		%{name}-config.patch
 Patch1:		%{name}-anti_latin1.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
