@@ -1,6 +1,6 @@
 Summary:	Converts .fig files (such as those from xfig) to other formats
 Summary(de):	Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
-Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats."
+Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
 Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych formatów
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
