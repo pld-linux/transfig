@@ -9,7 +9,7 @@ Summary(tr):	fig dosyalarЩnЩ baЧka biГimlere dЖnЭЧtЭrЭr
 Summary(uk):	Конвертор файл╕в .fig (формат програми xfig) в ╕нш╕ формати
 Name:		transfig
 Version:	3.2.4
-Release:	2
+Release:	3
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
@@ -25,9 +25,6 @@ BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -96,7 +93,9 @@ xmkmf -a
 	CXXDEBUGFLAGS="%{rpmcflags}" \
 	LOCAL_LDFLAGS="%{rpmldflags}" \
 	BINDIR=%{_bindir} \
-	MANPATH=%{_mandir}
+	MANPATH=%{_mandir} \
+	XFIGLIBDIR=%{_datadir}/xfig \
+	FIG2DEV_LIBDIR=%{_datadir}/fig2dev
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -104,7 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
-	MANPATH=%{_mandir}
+	MANPATH=%{_mandir} \
+	XFIGLIBDIR=%{_datadir}/xfig \
+	FIG2DEV_LIBDIR=%{_datadir}/fig2dev
 
 %clean
 rm -rf $RPM_BUILD_ROOT
