@@ -15,7 +15,6 @@ Patch0:		%{name}-i18n.patch
 Patch1:		%{name}-config.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	xpm-devel
 BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
