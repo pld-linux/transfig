@@ -50,10 +50,10 @@ kümesidir ve çeþitli ortamlarda çýktýsý alýnabilecek dosyalar yaratýr.
 
 %build
 xmkmf
-make Makefiles
+%{__make} Makefiles
 
 %ifarch alpha
-make EXTRA_DEFINES="-Dcfree=free" \
+%{__make} EXTRA_DEFINES="-Dcfree=free" \
 	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
 %else
 make	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
@@ -61,7 +61,7 @@ make	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install install.man DESTDIR=$RPM_BUILD_ROOT
+%{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
 
 # Dunno why these are not installed
 #for i in fig2ps2tex fig2ps2tex.sh pic2tpic
