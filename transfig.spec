@@ -5,13 +5,16 @@ Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych forma
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.1
-Release:	3
+Release:	4
 Copyright:	distributable
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
 Source:		ftp://ftp.x.org/contrib/applications/drawing_tools/transfig/%{name}.%{version}.tar.gz
 Patch0:		transfig-imake.patch
 Buildroot:	/tmp/%{name}-%{version}-root
+
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -28,8 +31,8 @@ Transfig est un ensemble d'outils pour créer des documents textes avec
 des graphiques portables, en ce sens qu'ils peuvent être imprimés dans
 des nombreux environnements.
 
-%description
-Pakiet TransFig  jest zbiorem narzêdzi do tworzenia dokumentóe TeXowych z
+%description -l pl
+Pakiet TransFig jest zbiorem narzêdzi do tworzenia dokumentów TeXowych z
 grafik±, które bêd± przenoszalne w sensie, ¿e bêd± mozliwe do wydrukowania
 na szrokiej palecie drukarek.
 
@@ -53,62 +56,28 @@ make	CDEBUGFLAGS="$RPM_OPT_FLAGS" CXXDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install install.man
+make install install.man DESTDIR=$RPM_BUILD_ROOT
 
 # Dunno why these are not installed
 for i in fig2ps2tex fig2ps2tex.sh pic2tpic
 do
-	install -c fig2dev/$i.script $RPM_BUILD_ROOT/usr/X11R6/bin/$i
+	install -c fig2dev/$i.script $RPM_BUILD_ROOT%{_bindir}/$i
 done
 
-gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
+	CHANGES NOTES README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES NOTES README
-%attr(755,root,root) /usr/X11R6/bin/*
-/usr/X11R6/man/man1/*
+%doc *.gz
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
 
 %changelog
-* Fri Jan 08 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.2.1-3]
-- added missing %attr macros.
-
-* Tue Dec  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.2.1-2]
-- added gzipping man pages,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- added using $RPM_OPT_FLAGS during compile,
-- added full %attr description in %files,
-- simplification in %install,
-- added pl translation,
-- added %attr and %defattr macros in %files (allows build package from
-  non-root account).
-
-* Tue Jul  7 1998 Jeff Johnson <jbj@redhat.com>
-- update to 3.2.1.
-
-* Sat Jun 27 1998 Jeff Johnson <jbj@redhat.com>
-- add %clean.
-
-* Mon Apr 27 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Thu Nov 13 1997 Otto Hammersmith <otto@redhat.com>
-- fixed problem with Imakefile for fig2dev not including $(XLIB)
-- build rooted.
-
-* Fri Oct 24 1997 Otto Hammersmith <otto@redhat.com>
-- recreated the glibc patch that is needed for an alpha build, missed it
-  building on the intel.
-
-* Tue Oct 21 1997 Otto Hammersmith <otto@redhat.com>
-- updated version
-- fixed source url
-
-* Fri Jul 18 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
+* Sun Jun 27 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.2.1-4]
+- based on RH spec,
+- spec rewrited by PLD team.
