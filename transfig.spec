@@ -1,17 +1,17 @@
-Summary:     Converts .fig files (such as those from xfig) to other formats
-Summary(de): Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
-Summary(fr): Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats."
-Summary(pl): konwerter formatu plików .fig (jakie generuje xfig) do innych formatów
-Summary(tr): fig dosyalarýný baþka biçimlere dönüþtürür
-Name:        transfig
-Version:     3.2.1
-Release:     3
-Copyright:   distributable
-Group:       X11/Applications/Graphics
-Group(pl):   X11/Aplikacje/Grafika
-Source:      ftp://ftp.x.org/contrib/applications/drawing_tools/transfig/%{name}.%{version}.tar.gz
-Patch0:      transfig-imake.patch
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	Converts .fig files (such as those from xfig) to other formats
+Summary(de):	Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
+Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats."
+Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych formatów
+Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
+Name:		transfig
+Version:	3.2.1
+Release:	3
+Copyright:	distributable
+Group:		X11/Applications/Graphics
+Group(pl):	X11/Aplikacje/Grafika
+Source:		ftp://ftp.x.org/contrib/applications/drawing_tools/transfig/%{name}.%{version}.tar.gz
+Patch0:		transfig-imake.patch
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
