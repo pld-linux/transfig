@@ -5,7 +5,7 @@ Summary(pl):	konwerter formatu plików .fig (jakie generuje xfig) do innych forma
 Summary(tr):	fig dosyalarýný baþka biçimlere dönüþtürür
 Name:		transfig
 Version:	3.2.3d
-Release:	1
+Release:	2
 Epoch:		1
 License:	Distributable
 Group:		X11/Applications/Graphics
