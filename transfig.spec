@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 - added full %attr description in %files,
 - simplification in %install,
 - added pl translation,
-- added %attr and %defattr macros in %files (allow build package from
+- added %attr and %defattr macros in %files (allows build package from
   non-root account).
 
 * Tue Jul  7 1998 Jeff Johnson <jbj@redhat.com>
