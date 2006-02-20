@@ -19,11 +19,17 @@ Patch0:		%{name}-config.patch
 Patch1:		%{name}-broken.patch
 Patch2:		%{name}-gcc33.patch
 Patch3:		%{name}-strerror.patch
+Patch4:		%{name}-rgb.patch
+Patch5:		%{name}-badc.patch
 # seems outdated (some i18n support has been introduced)
 #Patch1:		%{name}-anti_latin1.patch
-BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+BuildRequires:	rman
+BuildRequires:	xorg-cf-files
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-util-gccmakedep
+BuildRequires:	xorg-util-imake
 Requires:	ghostscript
 Requires:	ghostscript-fonts-std
 Conflicts:	netpbm-progs < 9.1
@@ -84,8 +90,11 @@ TeX документ╕в, як╕ ╓ портабельними (тобто, можуть бути надрукован╕ на
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
+export IMAKEINCLUDE="-I%{_libdir}/X11/config"
 xmkmf -a
 
 %{__make} \
@@ -94,6 +103,7 @@ xmkmf -a
 %endif
 	CDEBUGFLAGS="%{rpmcflags}" \
 	CXXDEBUGFLAGS="%{rpmcflags}" \
+	DOCDIR=%{_docdir} \
 	LOCAL_LDFLAGS="%{rpmldflags}" \
 	BINDIR=%{_bindir} \
 	MANPATH=%{_mandir} \
@@ -106,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
+	DOCDIR=%{_docdir} \
 	MANPATH=%{_mandir} \
 	XFIGLIBDIR=%{_datadir}/xfig \
 	FIG2DEV_LIBDIR=%{_datadir}/fig2dev
