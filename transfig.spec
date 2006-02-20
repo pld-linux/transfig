@@ -9,7 +9,7 @@ Summary(tr):	fig dosyalarЩnЩ baЧka biГimlere dЖnЭЧtЭrЭr
 Summary(uk):	Конвертор файл╕в .fig (формат програми xfig) в ╕нш╕ формати
 Name:		transfig
 Version:	3.2.4
-Release:	3
+Release:	4
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
