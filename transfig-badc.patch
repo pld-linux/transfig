@@ -1,0 +1,36 @@
+diff -ur transfig/fig2dev/fig2dev.c transfig.3.2.4/fig2dev/fig2dev.c
+--- transfig/fig2dev/fig2dev.c	2004-10-18 22:19:04.396035488 +0200
++++ transfig.3.2.4/fig2dev/fig2dev.c	2004-10-18 22:30:39.739327240 +0200
+@@ -707,7 +707,8 @@
+       depth_usage();
+     switch(*s) {		/* what's the delim? */
+       case ':':			/* parse a range */
+-	d->d2 = strtol(++s,&s,10);
++	s++;
++	d->d2 = strtol(s,&s,10);
+ 	if (d->d2 < d->d1) 
+ 	    depth_usage();
+ 	break;
+diff -ur transfig/transfig/sys.c transfig.3.2.4/transfig/sys.c
+--- transfig/transfig/sys.c	2004-10-18 22:19:04.000000000 +0200
++++ transfig.3.2.4/transfig/sys.c	2004-10-18 23:04:48.129924536 +0200
+@@ -15,6 +15,8 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include "transfig.h"
+ 
+ #define MAXSYS 10000
+diff -ur transfig/transfig/transfig.c transfig.3.2.4/transfig/transfig.c
+--- transfig/transfig/transfig.c	2004-10-18 22:19:04.000000000 +0200
++++ transfig.3.2.4/transfig/transfig.c	2004-10-18 23:04:43.603612640 +0200
+@@ -25,6 +25,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "patchlevel.h"
+ #include "transfig.h"
+ 
