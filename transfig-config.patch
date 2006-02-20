@@ -5,7 +5,7 @@
  XCOMM and installed xfig.
  
 -XFIGLIBDIR =	/usr/local/lib/X11/xfig
-+XFIGLIBDIR =	/usr/X11R6/share/xfig
++XFIGLIBDIR =	/usr/share/xfig
  
  XCOMM ******
  XCOMM If your system has the strerror() function (doesn't have sys_errlist) then
@@ -14,7 +14,7 @@
  XCOMM
  
 -RGB = $(LIBDIR)/rgb.txt
-+RGB = /usr/X11R6/lib/X11/rgb.txt
++RGB = /usr/share/X11/rgb.txt
  
  XCOMM Comment out the following #define USEPNG if you don't want PNG support
  XCOMM Uncomment the #define for USEPNG if you want to be able to import
@@ -27,21 +27,12 @@
  #endif
  
  XCOMM ****************
-@@ -77,7 +77,7 @@
- 
- #ifdef USEXPM
- XPMLIBDIR = $(USRLIBDIR)
--XPMINC = -I/usr/include/X11
-+XPMINC = -I/usr/X11R6/include/X11
- #endif
- 
- XCOMM ****************
 @@ -126,11 +126,11 @@
  
  #ifdef I18N
  I18N_DEFS = -DI18N 
 -FIG2DEV_LIBDIR = /usr/local/lib/fig2dev
-+FIG2DEV_LIBDIR = /usr/X11R6/share/fig2dev
++FIG2DEV_LIBDIR = /usr/share/fig2dev
  I18N_DEV_DEFS = $(I18N_DEFS) -DFIG2DEV_LIBDIR=\\\"$(FIG2DEV_LIBDIR)\\\"
  
  install::
