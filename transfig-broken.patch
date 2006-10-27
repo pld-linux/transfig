@@ -1,29 +1,38 @@
---- transfig.3.2.4/fig2dev/dev/genemf.c.orig	2003-06-17 10:18:43.000000000 -0400
-+++ transfig.3.2.4/fig2dev/dev/genemf.c	2003-06-17 10:18:34.000000000 -0400
-@@ -375,7 +375,7 @@
- static void rotate();
+--- transfig.3.2.5_alpha7/fig2dev/dev/genemf.c.orig	2004-02-10 17:32:02.000000000 +0100
++++ transfig.3.2.5_alpha7/fig2dev/dev/genemf.c	2006-10-28 00:20:55.363664750 +0200
+@@ -683,7 +683,7 @@
  static void shape();
  static void shape_interior();
+ static void textunicode();
 -static void text();
 +static void textfunc();
- static void textangle();
  static void textcolr();
- static void textfont();
-@@ -1788,7 +1788,7 @@
- }
+ static void textalign();
+ #if defined(I18N) && defined(USE_ICONV)
+@@ -3000,7 +3000,7 @@
+ }/* end textunicode */
  
  
--static void text(x, y, h, l, text, type)
-+static void textfunc(x, y, h, l, text, type)
-     int     x, y;
-     double  h, l;			/* Pixels (1200 dpi) */
-     char   *text;
-@@ -2206,7 +2206,7 @@
-   texttype(t->type);
-   textcolr(t->color);
-   textangle(t->angle);
--  text(t->base_x, t->base_y, t->height, t->length, t->cstring, t->type);
-+  textfunc(t->base_x, t->base_y, t->height, t->length, t->cstring, t->type);
- }
+-static void text(x, y, bbx, str)
++static void textfunc(x, y, bbx, str)
+     int     x, y;		/* reference point */
+     RECTL  *bbx;		/* bounding box */
+     char   *str;
+@@ -3482,7 +3482,7 @@
+ 		bak = *s1;
+ 		*s1 = '\0';
+ 
+-		text(0, 0, &rclBounds, s);
++		textfunc(0, 0, &rclBounds, s);
+ 
+ 		*s1 = bak;
+ 	    }
+@@ -3508,7 +3508,7 @@
+     }
+ 
+     textfont(font, t->size, round(t->angle * RAD_01DEG));
+-    text(t->base_x, t->base_y, &rclBounds, t->cstring);
++    textfunc(t->base_x, t->base_y, &rclBounds, t->cstring);
+ }/* end genemf_text */
  
  

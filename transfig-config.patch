@@ -1,6 +1,6 @@
---- transfig.3.2.4/fig2dev/Imakefile.orig	Thu Dec 19 18:33:44 2002
-+++ transfig.3.2.4/fig2dev/Imakefile	Tue Mar 25 01:38:21 2003
-@@ -20,7 +20,7 @@
+--- transfig.3.2.5_alpha7/fig2dev/Imakefile.orig	2005-10-27 18:56:02.000000000 +0200
++++ transfig.3.2.5_alpha7/fig2dev/Imakefile	2006-10-28 00:17:31.890948500 +0200
+@@ -34,7 +34,7 @@
  XCOMM You should point XFIGLIBDIR to the same directory you did when you compiled
  XCOMM and installed xfig.
  
@@ -8,8 +8,8 @@
 +XFIGLIBDIR =	/usr/share/xfig
  
  XCOMM ******
- XCOMM If your system has the strerror() function (doesn't have sys_errlist) then
-@@ -48,7 +48,7 @@
+ XCOMM If your system doesn't have the strerror() function (has sys_errlist) then
+@@ -62,7 +62,7 @@
  XCOMM the full name (rgb.txt) now.
  XCOMM
  
@@ -18,30 +18,25 @@
  
  XCOMM Comment out the following #define USEPNG if you don't want PNG support
  XCOMM Uncomment the #define for USEPNG if you want to be able to import
-@@ -61,7 +61,7 @@
- 
+@@ -76,7 +76,7 @@
  #ifdef USEPNG
  PNGLIBDIR = $(USRLIBDIR)
+ ZLIBDIR = $(USRLIBDIR)
 -PNGINC = -I/usr/include/X11
 +PNGINC =
  #endif
  
  XCOMM ****************
-@@ -126,11 +126,11 @@
+@@ -141,7 +141,7 @@
  
  #ifdef I18N
  I18N_DEFS = -DI18N 
 -FIG2DEV_LIBDIR = /usr/local/lib/fig2dev
 +FIG2DEV_LIBDIR = /usr/share/fig2dev
- I18N_DEV_DEFS = $(I18N_DEFS) -DFIG2DEV_LIBDIR=\\\"$(FIG2DEV_LIBDIR)\\\"
+ I18N_DEV_DEFS = $(I18N_DEFS) -DFIG2DEV_LIBDIR=$(FIG2DEV_LIBDIR) -DFIG2DEV_LIBDIR_STR=\\\"$(FIG2DEV_LIBDIR)\\\"
  
- install::
--	[ -d $(DESTDIR)$(FIG2DEV_LIBDIR) ] || mkdir $(DESTDIR)$(FIG2DEV_LIBDIR)
-+	[ -d $(DESTDIR)$(FIG2DEV_LIBDIR) ] || mkdir -p $(DESTDIR)$(FIG2DEV_LIBDIR)
- 	$(INSTALL) -c dev/japanese.ps $(DESTDIR)$(FIG2DEV_LIBDIR)
- 	( cd $(DESTDIR)$(FIG2DEV_LIBDIR); \
- 	  rm -f ja.ps ja_JP.ps ja_JP.ujis.ps ja_JP.eucJP.ps ja_JP.EUC.ps; \
-@@ -154,7 +154,7 @@
+ #endif /* I18N */
+@@ -150,7 +150,7 @@
  XCOMM *** You shouldn't have to change anything below this point ***
  XCOMM **************************************************************
  
@@ -50,7 +45,7 @@
  
  #ifdef USEPNG
  DUSEPNG = -DUSE_PNG
-@@ -229,11 +229,11 @@
+@@ -225,11 +225,11 @@
  XCOMM Install the tk bitmaps here
  install::
  	@(cd bitmaps ; \
