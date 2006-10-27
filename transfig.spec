@@ -8,21 +8,18 @@ Summary(ru):	Конвертор файлов .fig (формат программы xfig) в другие форматы
 Summary(tr):	fig dosyalarЩnЩ baЧka biГimlere dЖnЭЧtЭrЭr
 Summary(uk):	Конвертор файл╕в .fig (формат програми xfig) в ╕нш╕ формати
 Name:		transfig
-Version:	3.2.4
-Release:	4
+Version:	3.2.5
+%define	bver	alpha7
+Release:	0.%{bver}.1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
-Source0:	http://www.xfig.org/xfigdist/%{name}.%{version}.tar.gz
-# Source0-md5:	742de0f7a3cae74d247bbd0c70dd9dd7
+#Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
+Source0:	http://xfig.org/software/xfig/%{version}-alpha/%{name}.%{version}_%{bver}.tar.gz
+# Source0-md5:	6fb38174e809583c3a3013eb73512539
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-broken.patch
-Patch2:		%{name}-gcc33.patch
-Patch3:		%{name}-strerror.patch
-Patch4:		%{name}-rgb.patch
-Patch5:		%{name}-badc.patch
-# seems outdated (some i18n support has been introduced)
-#Patch1:		%{name}-anti_latin1.patch
+Patch2:		%{name}-badc.patch
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	rman
@@ -85,24 +82,20 @@ TeX документ╕в, як╕ ╓ портабельними (тобто, можуть бути надрукован╕ на
 р╕зноман╕тних платформах).
 
 %prep
-%setup -q -n %{name}.%{version}
+%setup -q -n %{name}.%{version}_%{bver}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
-export IMAKEINCLUDE="-I%{_libdir}/X11/config"
 xmkmf -a
 
 %{__make} \
 %ifarch alpha
 	EXTRA_DEFINES="-Dcfree=free" \
 %endif
+	CC="%{__cc}" \
 	CDEBUGFLAGS="%{rpmcflags}" \
-	CXXDEBUGFLAGS="%{rpmcflags}" \
 	DOCDIR=%{_docdir} \
 	LOCAL_LDFLAGS="%{rpmldflags}" \
 	BINDIR=%{_bindir} \
