@@ -1,12 +1,12 @@
 Summary:	Converts .fig files (such as those from xfig) to other formats
-Summary(de.UTF-8):   Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
-Summary(es.UTF-8):   Convierte archivos .fig (como los del xfig) para otros formatos
-Summary(fr.UTF-8):   Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
-Summary(pl.UTF-8):   Konwerter plików w formacie .fig (jakie generuje xfig) do innych formatów
-Summary(pt_BR.UTF-8):   Converte arquivos .fig (como os do xfig) para outros formatos
-Summary(ru.UTF-8):   Конвертор файлов .fig (формат программы xfig) в другие форматы
-Summary(tr.UTF-8):   fig dosyalarını başka biçimlere dönüştürür
-Summary(uk.UTF-8):   Конвертор файлів .fig (формат програми xfig) в інші формати
+Summary(de.UTF-8):	Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
+Summary(es.UTF-8):	Convierte archivos .fig (como los del xfig) para otros formatos
+Summary(fr.UTF-8):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
+Summary(pl.UTF-8):	Konwerter plików w formacie .fig (jakie generuje xfig) do innych formatów
+Summary(pt_BR.UTF-8):	Converte arquivos .fig (como os do xfig) para outros formatos
+Summary(ru.UTF-8):	Конвертор файлов .fig (формат программы xfig) в другие форматы
+Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
+Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
 Version:	3.2.5
 %define	bver	alpha7
