@@ -1,12 +1,12 @@
 Summary:	Converts .fig files (such as those from xfig) to other formats
-Summary(de):	Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
-Summary(es):	Convierte archivos .fig (como los del xfig) para otros formatos
-Summary(fr):	Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
-Summary(pl):	Konwerter plikСw w formacie .fig (jakie generuje xfig) do innych formatСw
-Summary(pt_BR):	Converte arquivos .fig (como os do xfig) para outros formatos
-Summary(ru):	Конвертор файлов .fig (формат программы xfig) в другие форматы
-Summary(tr):	fig dosyalarЩnЩ baЧka biГimlere dЖnЭЧtЭrЭr
-Summary(uk):	Конвертор файл╕в .fig (формат програми xfig) в ╕нш╕ формати
+Summary(de.UTF-8):   Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
+Summary(es.UTF-8):   Convierte archivos .fig (como los del xfig) para otros formatos
+Summary(fr.UTF-8):   Convertit les fichiers .fig (comme ceux d'xfig) en d'autres formats
+Summary(pl.UTF-8):   Konwerter plikцЁw w formacie .fig (jakie generuje xfig) do innych formatцЁw
+Summary(pt_BR.UTF-8):   Converte arquivos .fig (como os do xfig) para outros formatos
+Summary(ru.UTF-8):   п п╬п╫п╡п╣я─я┌п╬я─ я└п╟п╧п╩п╬п╡ .fig (я└п╬я─п╪п╟я┌ п©я─п╬пЁя─п╟п╪п╪я▀ xfig) п╡ п╢я─я┐пЁп╦п╣ я└п╬я─п╪п╟я┌я▀
+Summary(tr.UTF-8):   fig dosyalarд╠nд╠ baе÷ka biц╖imlere dц╤nц╪е÷tц╪rц╪r
+Summary(uk.UTF-8):   п п╬п╫п╡п╣я─я┌п╬я─ я└п╟п╧п╩я√п╡ .fig (я└п╬я─п╪п╟я┌ п©я─п╬пЁя─п╟п╪п╦ xfig) п╡ я√п╫я┬я√ я└п╬я─п╪п╟я┌п╦
 Name:		transfig
 Version:	3.2.5
 %define	bver	alpha7
@@ -37,49 +37,49 @@ TransFig is a set of tools for creating TeX documents with graphics
 which are portable, in the sense that they can be printed in a wide
 variety of environments.
 
-%description -l de
+%description -l de.UTF-8
 TransFig ist ein Satz von Tools zum Erstellen von TeX-Dokumenten mit
-Grafiken, die portabel sind, das heiъt, sie kЖnnen in einer groъen
+Grafiken, die portabel sind, das heiц÷t, sie kц╤nnen in einer groц÷en
 Auswahl von Umgebungen gedruckt werden.
 
-%description -l es
-TransFig es un conjunto de herramientas para creaciСn de documentos
-TeX con grАficos que son portables, en el sentido de que pueden ser
+%description -l es.UTF-8
+TransFig es un conjunto de herramientas para creaciцЁn de documentos
+TeX con grц║ficos que son portables, en el sentido de que pueden ser
 impresos en una gran variedad de ambientes.
 
-%description -l fr
-Transfig est un ensemble d'outils pour crИer des documents textes avec
-des graphiques portables, en ce sens qu'ils peuvent Йtre imprimИs dans
+%description -l fr.UTF-8
+Transfig est un ensemble d'outils pour crц╘er des documents textes avec
+des graphiques portables, en ce sens qu'ils peuvent ц╙tre imprimц╘s dans
 des nombreux environnements.
 
-%description -l pl
-Pakiet TransFig jest zbiorem narzЙdzi do tworzenia dokumentСw TeXowych
-z grafik╠, ktСre bЙd╠ przeno╤ne w tym sensie, ©e bЙdzie mo©na je
-wydrukowaФ na szerokiej palecie drukarek.
+%description -l pl.UTF-8
+Pakiet TransFig jest zbiorem narzд≥dzi do tworzenia dokumentцЁw TeXowych
+z grafikд┘, ktцЁre bд≥dд┘ przenoе⌡ne w tym sensie, е╪e bд≥dzie moе╪na je
+wydrukowaд┤ na szerokiej palecie drukarek.
 
-%description -l pt_BR
-TransFig И um conjunto de ferramentas para criaГЦo de documentos TeX
-com grАficos que sЦo portАveis, no sentido de que eles podem ser
+%description -l pt_BR.UTF-8
+TransFig ц╘ um conjunto de ferramentas para criaц╖цёo de documentos TeX
+com grц║ficos que sцёo portц║veis, no sentido de que eles podem ser
 impressos em uma grande variedade de ambientes.
 
-%description -l ru
-Утилита transfig создает makefile, транслирующий рисунки FIG
-(созданные программой xfig) или PIC в заданный графический язык
-системы LaTeX (например, PostScript(TM)). Transfig используется для
-создания документов TeX, являющихся портабельными (то есть, они могут
-быть напечатаны на различных платформах).
+%description -l ru.UTF-8
+пёя┌п╦п╩п╦я┌п╟ transfig я│п╬п╥п╢п╟п╣я┌ makefile, я┌я─п╟п╫я│п╩п╦я─я┐я▌я┴п╦п╧ я─п╦я│я┐п╫п╨п╦ FIG
+(я│п╬п╥п╢п╟п╫п╫я▀п╣ п©я─п╬пЁя─п╟п╪п╪п╬п╧ xfig) п╦п╩п╦ PIC п╡ п╥п╟п╢п╟п╫п╫я▀п╧ пЁя─п╟я└п╦я┤п╣я│п╨п╦п╧ я▐п╥я▀п╨
+я│п╦я│я┌п╣п╪я▀ LaTeX (п╫п╟п©я─п╦п╪п╣я─, PostScript(TM)). Transfig п╦я│п©п╬п╩я▄п╥я┐п╣я┌я│я▐ п╢п╩я▐
+я│п╬п╥п╢п╟п╫п╦я▐ п╢п╬п╨я┐п╪п╣п╫я┌п╬п╡ TeX, я▐п╡п╩я▐я▌я┴п╦я┘я│я▐ п©п╬я─я┌п╟п╠п╣п╩я▄п╫я▀п╪п╦ (я┌п╬ п╣я│я┌я▄, п╬п╫п╦ п╪п╬пЁя┐я┌
+п╠я▀я┌я▄ п╫п╟п©п╣я┤п╟я┌п╟п╫я▀ п╫п╟ я─п╟п╥п╩п╦я┤п╫я▀я┘ п©п╩п╟я┌я└п╬я─п╪п╟я┘).
 
-%description -l tr
-TransFig, Гizimler iГeren TeX belgeleri Эretebilmek iГin kullanЩlan
-bir araГ kЭmesidir ve ГeЧitli ortamlarda ГЩktЩsЩ alЩnabilecek dosyalar
-yaratЩr.
+%description -l tr.UTF-8
+TransFig, ц╖izimler iц╖eren TeX belgeleri ц╪retebilmek iц╖in kullanд╠lan
+bir araц╖ kц╪mesidir ve ц╖eе÷itli ortamlarda ц╖д╠ktд╠sд╠ alд╠nabilecek dosyalar
+yaratд╠r.
 
-%description -l uk
-Утил╕та transfig створю╓ makefile, який транслю╓ малюнки FIG (створен╕
-програмою xfig) чи PIC у задану граф╕чну мову системи LaTeX
-(наприклад, PostScript(TM)). Transfig використову╓ться для створення
-TeX документ╕в, як╕ ╓ портабельними (тобто, можуть бути надрукован╕ на
-р╕зноман╕тних платформах).
+%description -l uk.UTF-8
+пёя┌п╦п╩я√я┌п╟ transfig я│я┌п╡п╬я─я▌я■ makefile, я▐п╨п╦п╧ я┌я─п╟п╫я│п╩я▌я■ п╪п╟п╩я▌п╫п╨п╦ FIG (я│я┌п╡п╬я─п╣п╫я√
+п©я─п╬пЁя─п╟п╪п╬я▌ xfig) я┤п╦ PIC я┐ п╥п╟п╢п╟п╫я┐ пЁя─п╟я└я√я┤п╫я┐ п╪п╬п╡я┐ я│п╦я│я┌п╣п╪п╦ LaTeX
+(п╫п╟п©я─п╦п╨п╩п╟п╢, PostScript(TM)). Transfig п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я■я┌я▄я│я▐ п╢п╩я▐ я│я┌п╡п╬я─п╣п╫п╫я▐
+TeX п╢п╬п╨я┐п╪п╣п╫я┌я√п╡, я▐п╨я√ я■ п©п╬я─я┌п╟п╠п╣п╩я▄п╫п╦п╪п╦ (я┌п╬п╠я┌п╬, п╪п╬п╤я┐я┌я▄ п╠я┐я┌п╦ п╫п╟п╢я─я┐п╨п╬п╡п╟п╫я√ п╫п╟
+я─я√п╥п╫п╬п╪п╟п╫я√я┌п╫п╦я┘ п©п╩п╟я┌я└п╬я─п╪п╟я┘).
 
 %prep
 %setup -q -n %{name}.%{version}_%{bver}
