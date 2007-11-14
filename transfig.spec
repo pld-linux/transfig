@@ -28,7 +28,7 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-util-gccmakedep
 BuildRequires:	xorg-util-imake
 Requires:	ghostscript
-Requires:	ghostscript-fonts-std
+Requires:	fonts-Type1-urw
 Conflicts:	netpbm-progs < 9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
