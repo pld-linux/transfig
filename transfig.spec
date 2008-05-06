@@ -14,12 +14,14 @@ Release:	0.%{bver}.1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
+#Source0Download: http://xfig.org/art15.html
 #Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
 Source0:	http://xfig.org/software/xfig/%{version}-alpha/%{name}.%{version}_%{bver}.tar.gz
 # Source0-md5:	6fb38174e809583c3a3013eb73512539
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-broken.patch
 Patch2:		%{name}-badc.patch
+URL:		http://xfig.org/
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	rman
