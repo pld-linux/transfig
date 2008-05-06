@@ -9,15 +9,13 @@ Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
 Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
 Version:	3.2.5
-%define	bver	alpha7
-Release:	0.%{bver}.1
+Release:	1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
 #Source0Download: http://xfig.org/art15.html
-#Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
-Source0:	http://xfig.org/software/xfig/%{version}-alpha/%{name}.%{version}_%{bver}.tar.gz
-# Source0-md5:	6fb38174e809583c3a3013eb73512539
+Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
+# Source0-md5:	3b2cffdd25529ae5877e305f29aae6d1
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-broken.patch
 Patch2:		%{name}-badc.patch
@@ -84,7 +82,7 @@ TeX документів, які є портабельними (тобто, мо
 різноманітних платформах).
 
 %prep
-%setup -q -n %{name}.%{version}_%{bver}
+%setup -q -n %{name}.%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -128,6 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 # other latin-2 files are symlinks to cs_CZ.ps
 %lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/cs*.ps
 %lang(hr) %{_datadir}/fig2dev/hr*.ps
+%lang(hu) %{_datadir}/fig2dev/hu*.ps
 %lang(ja) %{_datadir}/fig2dev/ja*.ps
 %lang(ko) %{_datadir}/fig2dev/ko*.ps
 %lang(pl) %{_datadir}/fig2dev/pl*.ps
