@@ -25,6 +25,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	rman
 BuildRequires:	xorg-cf-files
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-util-gccmakedep
 BuildRequires:	xorg-util-imake
 Requires:	fonts-Type1-urw
