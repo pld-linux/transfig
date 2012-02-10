@@ -130,8 +130,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES NOTES README
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/xfig
+%attr(755,root,root) %{_bindir}/fig2dev
+%attr(755,root,root) %{_bindir}/fig2ps2tex
+%attr(755,root,root) %{_bindir}/fig2ps2tex.sh
+%attr(755,root,root) %{_bindir}/pic2tpic
+%attr(755,root,root) %{_bindir}/transfig
 %dir %{_datadir}/fig2dev
 # other latin-2 files are symlinks to cs_CZ.ps
 %lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/cs*.ps
@@ -143,4 +146,9 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ro) %{_datadir}/fig2dev/ro*.ps
 %lang(sk) %{_datadir}/fig2dev/sk*.ps
 %lang(sl) %{_datadir}/fig2dev/sl*.ps
-%{_mandir}/man1/*
+%dir %{_datadir}/xfig
+%{_datadir}/xfig/*.bmp
+%{_mandir}/man1/fig2dev.1x*
+%{_mandir}/man1/fig2ps2tex.1x*
+%{_mandir}/man1/pic2tpic.1x*
+%{_mandir}/man1/transfig.1x*
