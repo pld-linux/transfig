@@ -8,17 +8,22 @@ Summary(ru.UTF-8):	Конвертор файлов .fig (формат прогр
 Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
 Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
-Version:	3.2.5
-Release:	5
+Version:	3.2.5d
+Release:	1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
 #Source0Download: http://xfig.org/art15.html
-Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
-# Source0-md5:	3b2cffdd25529ae5877e305f29aae6d1
+# Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/mcj/%{name}.%{version}.tar.gz
+# Source0-md5:	f9eac7f265668ecbfda6aaf7581989ad
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-broken.patch
-Patch2:		%{name}-badc.patch
+Patch2:		%{name}-3.2.5c-maxfontsize.patch
+Patch3:		%{name}-3.2.5d-precision.patch
+Patch4:		%{name}-3.2.5d-MAXWIDTH.patch
+Patch5:		%{name}-3.2.5d-libpng-1.5.patch
+Patch6:		%{name}-3.2.5d-leadspace.patch
 URL:		http://xfig.org/
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -87,6 +92,10 @@ TeX документів, які є портабельними (тобто, мо
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 xmkmf -a
