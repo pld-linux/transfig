@@ -20,6 +20,7 @@ Source0:	http://downloads.sourceforge.net/mcj/%{name}.%{version}.tar.gz
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-broken.patch
 Patch2:		%{name}-3.2.5c-maxfontsize.patch
+Patch3:		%{name}-format_string.patch
 URL:		http://xfig.org/
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -88,6 +89,7 @@ TeX документів, які є портабельними (тобто, мо
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 xmkmf -a
