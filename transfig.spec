@@ -22,7 +22,6 @@ Patch1:		%{name}-broken.patch
 Patch2:		%{name}-3.2.5c-maxfontsize.patch
 Patch3:		%{name}-format_string.patch
 URL:		http://xfig.org/
-BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	rman
 BuildRequires:	xorg-cf-files
