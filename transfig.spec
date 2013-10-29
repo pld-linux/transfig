@@ -9,7 +9,7 @@ Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
 Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
 Version:	3.2.5e
-Release:	1
+Release:	2
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
