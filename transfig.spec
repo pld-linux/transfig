@@ -91,7 +91,8 @@ TeX документів, які є портабельними (тобто, мо
 %patch3 -p1
 
 %build
-xmkmf -a
+xmkmf
+make Makefiles LIBDIR=%{_libdir}/X11
 
 %{__make} \
 %ifarch alpha
