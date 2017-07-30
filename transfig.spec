@@ -1,3 +1,6 @@
+# NOTE: since 3.2.6 official package name is "fig2dev" and transfig considered obsolete.
+# TODO: Fork fig2dev.spec from transfig.spec when they stop shipping transfig with fig2dev
+#       (and keep the last version of transfig here).
 Summary:	Converts .fig files (such as those from xfig) to other formats
 Summary(de.UTF-8):	Konvertiert .fig-Dateien (z.B. aus xfig) in andere Formate
 Summary(es.UTF-8):	Convierte archivos .fig (como los del xfig) para otros formatos
@@ -8,29 +11,20 @@ Summary(ru.UTF-8):	Конвертор файлов .fig (формат прогр
 Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
 Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
-Version:	3.2.5e
-Release:	3
+Version:	3.2.6a
+Release:	1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
-#Source0Download: http://xfig.org/art15.html
-# Source0:	http://xfig.org/software/xfig/%{version}/%{name}.%{version}.tar.gz
-Source0:	http://downloads.sourceforge.net/mcj/%{name}.%{version}.tar.gz
-# Source0-md5:	f547c67a93422c72039204f159f53ea9
-Patch0:		%{name}-config.patch
-Patch1:		%{name}-broken.patch
-Patch2:		%{name}-3.2.5c-maxfontsize.patch
-Patch3:		%{name}-format_string.patch
-URL:		http://xfig.org/
+Source0:	http://downloads.sourceforge.net/mcj/fig2dev-%{version}.tar.xz
+# Source0-md5:	f795a492cd9fa6d9abe0e11e581946f9
+Patch0:		%{name}-broken.patch
+URL:		http://mcj.sourceforge.net/
 BuildRequires:	libpng-devel
-BuildRequires:	rman
-BuildRequires:	xorg-cf-files
-BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libXpm-devel
-BuildRequires:	xorg-util-gccmakedep
-BuildRequires:	xorg-util-imake
-Requires:	fonts-Type1-urw
-Requires:	ghostscript
+BuildRequires:	xz
+Requires:	fig2dev = %{version}-%{release}
 Conflicts:	netpbm-progs < 9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -83,66 +77,73 @@ yaratır.
 TeX документів, які є портабельними (тобто, можуть бути надруковані на
 різноманітних платформах).
 
+%package -n fig2dev
+Summary:	Tools for creating portable TeX documents with graphics
+Summary(pl.UTF-8):	Narzędzia do tworzenia przenośnych dokumentów TeXa z grafiką
+Epoch:		0
+Group:		Applications/Graphics
+Requires:	fonts-Type1-urw
+Requires:	ghostscript
+
+%description -n fig2dev
+Fig2dev is a set of tools for creating TeX documents with graphics
+which are portable, in the sense that they can be printed in a wide
+variety of environments.
+
+%description -n fig2dev -l pl.UTF-8
+Fig2dev to zbiór narzędzi do tworzenia dokumentów TeXa z grafiką,
+które są przenośne - w takim sensie, że mogą być drukowane w wielu
+różnych środowiskach.
+
 %prep
-%setup -q -n %{name}.%{version}
+%setup -q -n fig2dev-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-xmkmf
-make Makefiles LIBDIR=%{_libdir}/X11
+%configure \
+	--enable-transfig
 
-%{__make} \
-%ifarch alpha
-	EXTRA_DEFINES="-Dcfree=free" \
-%endif
-	CC="%{__cc}" \
-	CDEBUGFLAGS="%{rpmcflags}" \
-	DOCDIR=%{_docdir} \
-	LOCAL_LDFLAGS="%{rpmldflags}" \
-	BINDIR=%{_bindir} \
-	MANPATH=%{_mandir} \
-	XFIGLIBDIR=%{_datadir}/xfig \
-	FIG2DEV_LIBDIR=%{_datadir}/fig2dev
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install install.man \
-	DESTDIR=$RPM_BUILD_ROOT \
-	BINDIR=%{_bindir} \
-	DOCDIR=%{_docdir} \
-	MANPATH=%{_mandir} \
-	XFIGLIBDIR=%{_datadir}/xfig \
-	FIG2DEV_LIBDIR=%{_datadir}/fig2dev
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/transfig
+%{_mandir}/man1/transfig.1*
+
+%files -n fig2dev
+%defattr(644,root,root,755)
 %doc CHANGES NOTES README
 %attr(755,root,root) %{_bindir}/fig2dev
 %attr(755,root,root) %{_bindir}/fig2ps2tex
-%attr(755,root,root) %{_bindir}/fig2ps2tex.sh
 %attr(755,root,root) %{_bindir}/pic2tpic
-%attr(755,root,root) %{_bindir}/transfig
 %dir %{_datadir}/fig2dev
+%{_datadir}/fig2dev/rgb.txt
+%{_datadir}/fig2dev/bitmaps
+%dir %{_datadir}/fig2dev/i18n
 # other latin-2 files are symlinks to cs_CZ.ps
-%lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/cs*.ps
-%lang(hr) %{_datadir}/fig2dev/hr*.ps
-%lang(hu) %{_datadir}/fig2dev/hu*.ps
-%lang(ja) %{_datadir}/fig2dev/ja*.ps
-%lang(ko) %{_datadir}/fig2dev/ko*.ps
-%lang(pl) %{_datadir}/fig2dev/pl*.ps
-%lang(ro) %{_datadir}/fig2dev/ro*.ps
-%lang(sk) %{_datadir}/fig2dev/sk*.ps
-%lang(sl) %{_datadir}/fig2dev/sl*.ps
-%dir %{_datadir}/xfig
-%{_datadir}/xfig/*.bmp
-%{_mandir}/man1/fig2dev.1x*
-%{_mandir}/man1/fig2ps2tex.1x*
-%{_mandir}/man1/pic2tpic.1x*
-%{_mandir}/man1/transfig.1x*
+%lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/i18n/cs_CZ.ps
+%lang(hr) %{_datadir}/fig2dev/i18n/hr_HR.ps
+%lang(hu) %{_datadir}/fig2dev/i18n/hu_HU.ps
+%lang(ja) %{_datadir}/fig2dev/i18n/japanese.ps
+%lang(ja) %{_datadir}/fig2dev/i18n/ja.ps
+%lang(ja) %{_datadir}/fig2dev/i18n/ja_JP*.ps
+%lang(ko) %{_datadir}/fig2dev/i18n/korean.ps
+%lang(ko) %{_datadir}/fig2dev/i18n/ko.ps
+%lang(ko) %{_datadir}/fig2dev/i18n/ko_KR*.ps
+%lang(pl) %{_datadir}/fig2dev/i18n/pl_PL.ps
+%lang(ro) %{_datadir}/fig2dev/i18n/ro_RO.ps
+%lang(ru) %{_datadir}/fig2dev/i18n/ru_RU*.ps
+%lang(sk) %{_datadir}/fig2dev/i18n/sk_SK.ps
+%lang(sl) %{_datadir}/fig2dev/i18n/sl_SI.ps
+%{_mandir}/man1/fig2dev.1*
+%{_mandir}/man1/fig2ps2tex.1*
+%{_mandir}/man1/pic2tpic.1*

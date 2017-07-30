@@ -1,6 +1,6 @@
---- transfig.3.2.5_alpha7/fig2dev/dev/genemf.c.orig	2004-02-10 17:32:02.000000000 +0100
-+++ transfig.3.2.5_alpha7/fig2dev/dev/genemf.c	2006-10-28 00:20:55.363664750 +0200
-@@ -683,7 +683,7 @@
+--- fig2dev-3.2.6a/fig2dev/dev/genemf.c.orig	2017-01-07 23:07:15.000000000 +0100
++++ fig2dev-3.2.6a/fig2dev/dev/genemf.c	2017-07-29 18:19:49.027329674 +0200
+@@ -696,7 +696,7 @@
  static void shape();
  static void shape_interior();
  static void textunicode();
@@ -8,17 +8,17 @@
 +static void textfunc();
  static void textcolr();
  static void textalign();
- #if defined(I18N) && defined(USE_ICONV)
-@@ -3000,7 +3000,7 @@
- }/* end textunicode */
+ #if defined(I18N) && defined(HAVE_ICONV)
+@@ -3020,7 +3020,7 @@
  
  
--static void text(x, y, bbx, str)
-+static void textfunc(x, y, bbx, str)
-     int     x, y;		/* reference point */
-     RECTL  *bbx;		/* bounding box */
-     char   *str;
-@@ -3482,7 +3482,7 @@
+ static void
+-text(
++textfunc(
+ 	int x,
+ 	int y,		/* reference point */
+ 	RECTL *bbx,	/* bounding box */
+@@ -3506,7 +3506,7 @@
  		bak = *s1;
  		*s1 = '\0';
  
@@ -27,7 +27,7 @@
  
  		*s1 = bak;
  	    }
-@@ -3508,7 +3508,7 @@
+@@ -3532,7 +3532,7 @@
      }
  
      textfont(font, t->size, round(t->angle * RAD_01DEG));
