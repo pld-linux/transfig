@@ -11,19 +11,19 @@ Summary(ru.UTF-8):	Конвертор файлов .fig (формат прогр
 Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
 Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
-Version:	3.2.6a
+Version:	3.2.8b
 Release:	1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
-Source0:	http://downloads.sourceforge.net/mcj/fig2dev-%{version}.tar.xz
-# Source0-md5:	f795a492cd9fa6d9abe0e11e581946f9
+Source0:	https://downloads.sourceforge.net/mcj/fig2dev-%{version}.tar.xz
+# Source0-md5:	a4c3a99fbbd8b61363eee6304d79ca7e
 Patch0:		%{name}-broken.patch
-URL:		http://mcj.sourceforge.net/
+URL:		https://mcj.sourceforge.net/
 BuildRequires:	libpng-devel
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xz
+BuildRequires:	zlib-devel
 Requires:	fig2dev = %{version}-%{release}
 Conflicts:	netpbm-progs < 9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -126,8 +126,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/fig2ps2tex
 %attr(755,root,root) %{_bindir}/pic2tpic
 %dir %{_datadir}/fig2dev
-%{_datadir}/fig2dev/rgb.txt
-%{_datadir}/fig2dev/bitmaps
 %dir %{_datadir}/fig2dev/i18n
 # other latin-2 files are symlinks to cs_CZ.ps
 %lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/i18n/cs_CZ.ps
@@ -144,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ru) %{_datadir}/fig2dev/i18n/ru_RU*.ps
 %lang(sk) %{_datadir}/fig2dev/i18n/sk_SK.ps
 %lang(sl) %{_datadir}/fig2dev/i18n/sl_SI.ps
+%lang(uk) %{_datadir}/fig2dev/i18n/uk_UA*.ps
 %{_mandir}/man1/fig2dev.1*
 %{_mandir}/man1/fig2ps2tex.1*
 %{_mandir}/man1/pic2tpic.1*
