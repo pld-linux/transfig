@@ -1,15 +1,15 @@
---- fig2dev-3.2.6a/fig2dev/dev/genemf.c.orig	2017-01-07 23:07:15.000000000 +0100
-+++ fig2dev-3.2.6a/fig2dev/dev/genemf.c	2017-07-29 18:19:49.027329674 +0200
-@@ -696,7 +696,7 @@
- static void shape();
- static void shape_interior();
- static void textunicode();
--static void text();
-+static void textfunc();
- static void textcolr();
- static void textalign();
- #if defined(I18N) && defined(HAVE_ICONV)
-@@ -3020,7 +3020,7 @@
+--- fig2dev-3.2.9/fig2dev/dev/genemf.c.orig	2023-06-03 17:25:42.000000000 +0200
++++ fig2dev-3.2.9/fig2dev/dev/genemf.c	2023-10-29 10:00:25.864117040 +0100
+@@ -726,7 +726,7 @@ static void shape(F_line *l, int join, i
+ static void shape_interior(F_line *l, void (*drawshape)(F_line *));
+ static void textunicode(const char *str, int *n_chars, short **utext,
+ 		int *n_unicode);
+-static void text(int x, int y, RECTL *bbx, char *str);
++static void textfunc(int x, int y, RECTL *bbx, char *str);
+ static void textcolr(int color);
+ static void textalign(int align);
+ #ifdef HAVE_ICONV
+@@ -3074,7 +3074,7 @@ textunicode(
  
  
  static void
@@ -18,21 +18,21 @@
  	int x,
  	int y,		/* reference point */
  	RECTL *bbx,	/* bounding box */
-@@ -3506,7 +3506,7 @@
- 		bak = *s1;
- 		*s1 = '\0';
+@@ -3578,7 +3578,7 @@ genemf_text(F_text *t)
+ 				bak = *s1;
+ 				*s1 = '\0';
  
--		text(0, 0, &rclBounds, s);
-+		textfunc(0, 0, &rclBounds, s);
+-				text(0, 0, &rclBounds, s);
++				textfunc(0, 0, &rclBounds, s);
  
- 		*s1 = bak;
- 	    }
-@@ -3532,7 +3532,7 @@
-     }
+ 				*s1 = bak;
+ 			}
+@@ -3604,7 +3604,7 @@ genemf_text(F_text *t)
+ 	}
  
-     textfont(font, t->size, round(t->angle * RAD_01DEG));
--    text(t->base_x, t->base_y, &rclBounds, t->cstring);
-+    textfunc(t->base_x, t->base_y, &rclBounds, t->cstring);
+ 	textfont(font, t->size, round(t->angle * RAD_01DEG));
+-	text(t->base_x, t->base_y, &rclBounds, t->cstring);
++	textfunc(t->base_x, t->base_y, &rclBounds, t->cstring);
  }/* end genemf_text */
  
  

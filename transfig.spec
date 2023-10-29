@@ -11,13 +11,13 @@ Summary(ru.UTF-8):	Конвертор файлов .fig (формат прогр
 Summary(tr.UTF-8):	fig dosyalarını başka biçimlere dönüştürür
 Summary(uk.UTF-8):	Конвертор файлів .fig (формат програми xfig) в інші формати
 Name:		transfig
-Version:	3.2.8b
+Version:	3.2.9
 Release:	1
 Epoch:		1
 License:	distributable
 Group:		X11/Applications/Graphics
 Source0:	https://downloads.sourceforge.net/mcj/fig2dev-%{version}.tar.xz
-# Source0-md5:	a4c3a99fbbd8b61363eee6304d79ca7e
+# Source0-md5:	b5a04023cc74f3413247efb1dcd511e9
 Patch0:		%{name}-broken.patch
 URL:		https://mcj.sourceforge.net/
 BuildRequires:	libpng-devel
@@ -127,22 +127,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pic2tpic
 %dir %{_datadir}/fig2dev
 %dir %{_datadir}/fig2dev/i18n
-# other latin-2 files are symlinks to cs_CZ.ps
-%lang(cs,hr,hu,pl,ro,sk,sl) %{_datadir}/fig2dev/i18n/cs_CZ.ps
-%lang(hr) %{_datadir}/fig2dev/i18n/hr_HR.ps
-%lang(hu) %{_datadir}/fig2dev/i18n/hu_HU.ps
 %lang(ja) %{_datadir}/fig2dev/i18n/japanese.ps
 %lang(ja) %{_datadir}/fig2dev/i18n/ja.ps
 %lang(ja) %{_datadir}/fig2dev/i18n/ja_JP*.ps
 %lang(ko) %{_datadir}/fig2dev/i18n/korean.ps
 %lang(ko) %{_datadir}/fig2dev/i18n/ko.ps
 %lang(ko) %{_datadir}/fig2dev/i18n/ko_KR*.ps
-%lang(pl) %{_datadir}/fig2dev/i18n/pl_PL.ps
-%lang(ro) %{_datadir}/fig2dev/i18n/ro_RO.ps
-%lang(ru) %{_datadir}/fig2dev/i18n/ru_RU*.ps
-%lang(sk) %{_datadir}/fig2dev/i18n/sk_SK.ps
-%lang(sl) %{_datadir}/fig2dev/i18n/sl_SI.ps
-%lang(uk) %{_datadir}/fig2dev/i18n/uk_UA*.ps
 %{_mandir}/man1/fig2dev.1*
 %{_mandir}/man1/fig2ps2tex.1*
 %{_mandir}/man1/pic2tpic.1*
