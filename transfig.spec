@@ -97,7 +97,7 @@ różnych środowiskach.
 
 %prep
 %setup -q -n fig2dev-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %configure \
